@@ -12,10 +12,14 @@ void student_rec()
     FILE *fp;
     int number_of_std,i;
 
-    printf("Enter the number of students:");
+    printf("\nEnter the number of students:");
     scanf("%d",&number_of_std);
 
+    
+
     struct std_rec rec[number_of_std];
+
+
 
     fp = fopen("studentrec.txt","w");
     printf("Enter records of Students\n");
@@ -34,14 +38,26 @@ void student_rec()
     }
     fclose(fp);
 
-    fp = fopen("studentrec.txt","r");
+
+    if(fscanf(fp,"%d%s%f",&rec[i].roll,rec[i].name,&rec[i].gpa)==0)
+    {
+        printf("\nNo data in the file!!\n");
+    }
+
+    else
+    {
+    printf("\nData successfully recorded!!!!\n");
+    }
 
     printf("\nDisplaying records from the file\n");
     printf("Roll\t\tName\t\tGpa\n");
 
-    while(fscanf(fp,"%d%s%f",&rec[i].roll,rec[i].name,&rec[i].gpa)!=EOF);
+    fp = fopen("studentrec.txt","r");
+
+
+    while(fscanf(fp,"%d%s%f",&rec[i].roll,rec[i].name,&rec[i].gpa)!=EOF)
     {
-        printf("%d\t\t%s\t\t%f\n",&rec[i].roll,rec[i].name,&rec[i].gpa);
+        printf("%d\t\t%s\t\t%f\n",rec[i].roll,rec[i].name,rec[i].gpa);
     }
     fclose(fp);
 
