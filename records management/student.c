@@ -50,14 +50,22 @@ void student_rec()
     }
 
     printf("\nDisplaying records from the file\n");
-    printf("Roll\t\tName\t\tGpa\n");
+    printf("_________________________________________\n");
+    printf("|Roll\t|\tName\t|\tGpa\t|\n");
+    printf("|_______|_______________|_______________|\n");
+  
+
 
     fp = fopen("studentrec.txt","r");
 
 
     while(fscanf(fp,"%d%s%f",&rec[i].roll,rec[i].name,&rec[i].gpa)!=EOF)
     {
-        printf("%d\t\t%s\t\t%f\n",rec[i].roll,rec[i].name,rec[i].gpa);
+        printf("|%d\t|\t%s\t|\t%0.2f\t|\n",rec[i].roll,rec[i].name,rec[i].gpa);
+        printf("|_______|_______________|_______________|\n");
+        
+        
+
     }
     fclose(fp);
 
